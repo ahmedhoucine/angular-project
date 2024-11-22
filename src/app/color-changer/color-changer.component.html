@@ -1,0 +1,14 @@
+<div
+  #colorDiv
+  [style.backgroundColor]="currentColor"
+  style="width: 200px; height: 200px; margin-bottom: 10px; border: 1px solid black;"
+>
+</div>
+<input
+  #colorInput
+  type="text"
+  placeholder="Entrez une couleur"
+  [(ngModel)]="inputValue"
+  (input)="changeColor(inputValue)"
+/>
+<button (click)="resetColor(colorInput)">Réinitialiser la couleur</button>

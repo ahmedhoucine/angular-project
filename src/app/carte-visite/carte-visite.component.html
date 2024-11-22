@@ -1,0 +1,79 @@
+<div class="row">
+    <!-- Form Section -->
+    <div class="col-md-6">
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" type="text" class="form-control" [(ngModel)]="cardData.name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="profession">Job</label>
+          <input id="profession" type="text" class="form-control" [(ngModel)]="cardData.profession" name="profession">
+        </div>
+        <div class="form-group">
+            <label for="profileImage">Profile Image</label>
+            <input id="profileImage" class="form-control" [(ngModel)]="cardData.profileImage" name="profileImage">
+          </div>
+        <div class="form-group">
+          <label for="quote">Quote</label>
+          <input id="quote" class="form-control" [(ngModel)]="cardData.quote" name="quote">
+        </div>
+        <div class="form-group">
+          <label for="motto">Motto</label>
+          <input id="motto" type="text" class="form-control" [(ngModel)]="cardData.motto" name="motto">
+        </div>
+        <div class="form-group">
+          <label for="jobDescription">Job Description</label>
+          <input id="jobDescription" class="form-control" [(ngModel)]="cardData.jobDescription" name="jobDescription">
+        </div>
+        
+      </form>
+    </div>
+  
+    <!-- Card Preview Section -->
+    <div class="col-md-6">
+      <div class="card-container">
+        <div class="card">
+          <div class="front">
+            <div class="cover">
+              <img [src]="cardData.coverImage" alt="Cover Image">
+            </div>
+            <div class="user">
+              <img class="img-circle"   [src]="'assets/images/' + cardData.profileImage" alt="Profile Image">
+            </div>
+            <div class="content">
+              <div class="main">
+                <h3 class="name">{{ cardData.name }}</h3>
+                <p class="profession">{{ cardData.profession }}</p>
+                <p class="text-center">{{ cardData.quote }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="back">
+            <div class="header">
+              <h5 class="motto">{{ cardData.motto }}</h5>
+            </div>
+            <div class="content">
+              <h4 class="text-center">Job Description</h4>
+              <p class="text-center">{{ cardData.jobDescription }}</p>
+              <div class="stats-container">
+                <div class="stats">
+                  <h4>{{ cardData.followers }}</h4>
+                  <p>Followers</p>
+                </div>
+                <div class="stats">
+                  <h4>{{ cardData.following }}</h4>
+                  <p>Following</p>
+                </div>
+                <div class="stats">
+                  <h4>{{ cardData.projects }}</h4>
+                  <p>Projects</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
