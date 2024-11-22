@@ -1,0 +1,44 @@
+<div class="container mt-4">
+    <!-- Input pour la couleur -->
+    <label for="colorInput">Couleur du texte :</label>
+    <input
+      id="colorInput"
+      type="text"
+      class="form-control mb-3"
+      placeholder="Entrez une couleur (e.g., red, #123456)"
+      [(ngModel)]="textColor"
+    />
+  
+    <!-- Input pour la taille de l'écriture -->
+    <label for="fontSizeInput">Taille de l'écriture (px) :</label>
+    <input
+      id="fontSizeInput"
+      type="number"
+      class="form-control mb-3"
+      placeholder="Entrez la taille (e.g., 16)"
+      [(ngModel)]="fontSize"
+    />
+  
+    <!-- Select pour la police -->
+    <label for="fontFamilySelect">Police :</label>
+    <select
+      id="fontFamilySelect"
+      class="form-select mb-3"
+      [(ngModel)]="fontFamily"
+    >
+      <option *ngFor="let font of fonts" [value]="font">{{ font }}</option>
+    </select>
+  
+    <!-- Paragraphe stylisé -->
+    <p
+      class="border p-3"
+      [ngStyle]="{
+        'color': textColor,
+        'font-size.px': fontSize,
+        'font-family': fontFamily
+      }"
+    >
+      Ceci est un paragraphe stylisé. Changez la couleur, la taille, ou la police pour voir les effets en direct !
+    </p>
+  </div>
+  

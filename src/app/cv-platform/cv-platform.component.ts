@@ -19,8 +19,9 @@ export class CvPlatformComponent {
       following: 350,
       projects: 15,
       coverImage: 'assets/images/rotating_card_thumb2.png',
-      profileImage: 'rotating_card_profile2.png'
+      profileImage: ''
     },
+    /*rotating_card_profile2.png*/
     {
       id: 2,
       name: 'Sarah Ben Salah',
@@ -32,7 +33,7 @@ export class CvPlatformComponent {
       following: 220,
       projects: 10,
       coverImage: 'assets/images/rotating_card_thumb2.png',
-      profileImage: 'rotating_card_profile3.png'
+      profileImage: 'assets/images/rotating_card_profile3.png'
     }
   ];
   selectedCv: Cv | null = null;

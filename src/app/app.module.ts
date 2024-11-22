@@ -10,6 +10,10 @@ import { ColorDisplayComponent } from './color-display/color-display.component';
 import { CvPlatformComponent } from './cv-platform/cv-platform.component';
 import { CvListComponent } from './cv-list/cv-list.component';
 import { CvDetailComponent } from './cv-detail/cv-detail.component';
+import { DefaultImagePipe } from './default-image.pipe';
+import { MiniWordComponent } from './mini-word/mini-word.component';
+import { RainbowDirective } from './rainbow.directive';
+import { RainbowComponent } from './rainbow/rainbow.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { CvDetailComponent } from './cv-detail/cv-detail.component';
     ColorDisplayComponent,
     CvPlatformComponent,
     CvListComponent,
-    CvDetailComponent
+    CvDetailComponent,
+    DefaultImagePipe,
+    MiniWordComponent,
+    RainbowDirective,
+    RainbowComponent
   ],
   imports: [
     BrowserModule,
