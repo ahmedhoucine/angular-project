@@ -4,6 +4,7 @@
   style="width: 200px; height: 200px; margin-bottom: 10px; border: 1px solid black;"
 >
 </div>
+
 <input
   #colorInput
   type="text"
@@ -12,3 +13,9 @@
   (input)="changeColor(inputValue)"
 />
 <button (click)="resetColor(colorInput)">Réinitialiser la couleur</button>
+
+<!-- Ajout du composant fils -->
+<app-color-display 
+  [backgroundColor]="currentColor"
+  (favoriteColorChange)="changeColor($event)"
+></app-color-display>
