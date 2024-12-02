@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostBinding, HostListener } from '@angular/core';
+import { Directive, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appRainbow]'
@@ -12,7 +12,7 @@ export class RainbowDirective {
   @HostBinding('style.color') textColor: string = '';
   @HostBinding('style.borderColor') borderColor: string = '';
 
-  constructor(private el: ElementRef) {}
+  constructor() {}
 
   // HostListener pour écouter l'événement keyup
   @HostListener('keyup') onKeyUp() {

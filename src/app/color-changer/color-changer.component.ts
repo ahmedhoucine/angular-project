@@ -18,8 +18,8 @@ export class ColorChangerComponent {
   // Réinitialise la couleur et vide l'input
   resetColor(colorInput: HTMLInputElement) {
     this.currentColor = this.defaultColor;
-    this.inputValue = ''; // Efface la valeur liée à ngModel
-    colorInput.value = ''; // Nettoie l'input HTML (au cas où)
+    this.inputValue = ''; 
+    colorInput.value = ''; 
   }
 
 }

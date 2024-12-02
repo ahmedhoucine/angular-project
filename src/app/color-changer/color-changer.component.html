@@ -14,8 +14,8 @@
 />
 <button (click)="resetColor(colorInput)">Réinitialiser la couleur</button>
 
-<!-- Ajout du composant fils -->
 <app-color-display 
   [backgroundColor]="currentColor"
   (favoriteColorChange)="changeColor($event)"
-></app-color-display>
+>
+</app-color-display>

@@ -8,41 +8,39 @@ import { Cv } from '../model/cv.model';
 })
 export class CvPlatformComponent {
   cvs: Cv[] = [
-    {
-      id: 1,
-      name: 'Ahmed Houcine',
-      profession: 'Web Developer',
-      quote: 'Building the future one line of code at a time.',
-      motto: 'Think. Build. Create.',
-      jobDescription: 'Developing and maintaining web applications.',
-      followers: 1200,
-      following: 350,
-      projects: 15,
-      coverImage: 'assets/images/rotating_card_thumb2.png',
-      profileImage: ''
-    },
-    /*rotating_card_profile2.png*/
-    {
-      id: 2,
-      name: 'Sarah Ben Salah',
-      profession: 'Data Scientist',
-      quote: 'Data is the new oil.',
-      motto: 'Analyze. Predict. Optimize.',
-      jobDescription: 'Creating models to derive insights from data.',
-      followers: 800,
-      following: 220,
-      projects: 10,
-      coverImage: 'assets/images/rotating_card_thumb2.png',
-      profileImage: 'assets/images/rotating_card_profile3.png'
-    }
+    new Cv(
+      1,
+      'Ahmed Houcine',
+      'Web Developer',
+      'Building the future one line of code at a time.',
+      'Think. Build. Create.',
+      'Developing and maintaining web applications.',
+      1200,
+      350,
+      15,
+      'assets/images/rotating_card_thumb2.png',
+      ''
+    ),
+    new Cv(
+      2,
+      'Sarah Ben Salah',
+      'Data Scientist',
+      'Data is the new oil.',
+      'Analyze. Predict. Optimize.',
+      'Creating models to derive insights from data.',
+      800,
+      220,
+      10,
+      'assets/images/rotating_card_thumb2.png',
+      'assets/images/rotating_card_profile3.png'
+    ),
+    // Using default values
+    new Cv()
   ];
+    
   selectedCv: Cv | null = null;
 
   onSelectCv(cv: Cv) {
     this.selectedCv = cv;
-  }
-  ngOnInit(){
-   
-    
   }
 }
