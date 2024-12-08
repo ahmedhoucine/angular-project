@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ColorChangerComponent } from './color-changer/color-changer.component';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { CarteVisiteComponent } from './carte-visite/carte-visite.component';
 import { ColorDisplayComponent } from './color-display/color-display.component';
 import { CvPlatformComponent } from './cv-platform/cv-platform.component';
@@ -19,6 +19,7 @@ import { RainbowComponent } from './rainbow/rainbow.component';
 import { EmbauchesComponent } from './embauches/embauches.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CvModificationComponent } from './cv-modification/cv-modification.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +36,14 @@ import { CvModificationComponent } from './cv-modification/cv-modification.compo
     RainbowComponent,
     EmbauchesComponent,
     NavbarComponent,
-    CvModificationComponent
+    CvModificationComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({

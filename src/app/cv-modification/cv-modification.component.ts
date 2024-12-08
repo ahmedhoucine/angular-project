@@ -3,13 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CvServiceService } from '../cv-service.service';
 import { Cv } from '../model/cv.model';
 
-
 @Component({
   selector: 'app-cv-modification',
   templateUrl: './cv-modification.component.html',
   styleUrls: ['./cv-modification.component.css']
 })
-export class CvModificationComponent {
+export class CvModificationComponent implements OnInit {
+  cvs: Cv[] = [];
   cv: Cv | null = null;
 
   constructor(
@@ -19,13 +19,20 @@ export class CvModificationComponent {
   ) {}
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!;
-    this.cv = this.cvService.getCvById(id); // Ajoutez cette méthode dans CvService
+    this.loadCVs();
+  }
+
+  loadCVs(): void {
+    this.cvService.fetchCVs().subscribe(cvs => {
+      this.cvs = cvs; 
+      const id = +this.route.snapshot.paramMap.get('id')!; 
+      this.cv = this.cvs.find(cv => cv.id === id) || null;
+    });
   }
 
   deleteCv(): void {
     if (this.cv) {
-      this.cvService.deleteCv(this.cv.id); // Ajoutez cette méthode dans CvService
+      this.cvService.deleteCv(this.cv.id);
       this.router.navigate(['/cv_platforme']);
     }
   }

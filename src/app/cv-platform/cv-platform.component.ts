@@ -14,21 +14,21 @@ export class CvPlatformComponent {
 
   constructor(
     private cvService: CvServiceService,
-    private embaucheService: EmbaucheServiceService
   ) {}
   async ngOnInit() {
-    this.loadCvs();
+    await this.loadCVs(); 
+    console.log(this.cvs)
+
   }
-  loadCvs(): void {
-    this.cvService.fetchCVs().subscribe((data) => {
-      this.cvs = data;
-    });
-  }
+  loadCVs(): void {
+    this.cvService.fetchCVs().subscribe(cvs => {
+      this.cvs = cvs; 
+    });}
+  
 
   onSelectCv(cv: Cv) {
     this.selectedCv = cv;
   }
   
-
 
 }
