@@ -15,10 +15,7 @@ export class CvPlatformComponent {
   constructor(
     private cvService: CvServiceService,
     private embaucheService: EmbaucheServiceService
-  ) {
-    this.cvs = this.cvService.getCvs();
-
-  }
+  ) {}
   async ngOnInit() {
     this.loadCvs();
   }
