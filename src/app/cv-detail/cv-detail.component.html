@@ -41,6 +41,9 @@
         <div class="footer text-center">
           <button class="btn btn-primary" (click)="onEmbaucher(cv)">Embaucher</button>
         </div>
+        <div class="footer text-center">
+          <button class="btn btn-primary" [routerLink]="['/cv_details', cv.id]">Voir Détails</button>
+        </div>
       </div>
     </div>
   </div>

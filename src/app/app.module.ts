@@ -17,6 +17,7 @@ import { RainbowDirective } from './rainbow.directive';
 import { RainbowComponent } from './rainbow/rainbow.component';
 import { EmbauchesComponent } from './embauches/embauches.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CvModificationComponent } from './cv-modification/cv-modification.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     RainbowDirective,
     RainbowComponent,
     EmbauchesComponent,
-    NavbarComponent
+    NavbarComponent,
+    CvModificationComponent
   ],
   imports: [
     BrowserModule,
