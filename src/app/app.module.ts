@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ColorChangerComponent } from './color-changer/color-changer.component';
@@ -15,6 +16,7 @@ import { MiniWordComponent } from './mini-word/mini-word.component';
 import { RainbowDirective } from './rainbow.directive';
 import { RainbowComponent } from './rainbow/rainbow.component';
 import { EmbauchesComponent } from './embauches/embauches.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,19 @@ import { EmbauchesComponent } from './embauches/embauches.component';
     MiniWordComponent,
     RainbowDirective,
     RainbowComponent,
-    EmbauchesComponent
+    EmbauchesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
