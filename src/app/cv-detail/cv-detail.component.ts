@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Cv } from '../model/cv.model';
+import { EmbaucheServiceService } from '../embauche-service.service';
 
 
 @Component({
@@ -8,5 +9,17 @@ import { Cv } from '../model/cv.model';
   styleUrls: ['./cv-detail.component.css']
 })
 export class CvDetailComponent {
+  embauches: Cv[] = [];
+
+  constructor(
+    private embaucheService: EmbaucheServiceService
+
+  ){
+    this.embauches = this.embaucheService.getEmbauches();
+  }
   @Input() cv: Cv | null = null;
+  onEmbaucher(cv: Cv) {
+    this.embaucheService.addEmbauche(cv);
+    console.log(this.embauches)
+  }
 }

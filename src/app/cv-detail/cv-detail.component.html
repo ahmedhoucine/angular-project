@@ -1,49 +1,51 @@
 <div class="col-md-6" *ngIf="cv; else noCvSelected">
-        <div class="card-container">
-          <div class="card">
-            <div class="front">
-              <div class="cover">
-                <img [src]="cv.coverImage" alt="Cover Image">
-              </div>
-              <div class="user">
-                <img class="img-circle"   [src]=" cv.profileImage  | defaultImage" alt="Profile Image">
-              </div>
-              <div class="content">
-                <div class="main">
-                  <h3 class="name">{{ cv.name }}</h3>
-                  <p class="profession">{{ cv.profession }}</p>
-                  <p class="text-center">{{ cv.quote }}</p>
-                </div>
-              </div>
+  <div class="card-container">
+    <div class="card">
+      <div class="front">
+        <div class="cover">
+          <img [src]="cv.coverImage" alt="Cover Image">
+        </div>
+        <div class="user">
+          <img class="img-circle" [src]="cv.profileImage | defaultImage" alt="Profile Image">
+        </div>
+        <div class="content">
+          <div class="main">
+            <h3 class="name">{{ cv.name }}</h3>
+            <p class="profession">{{ cv.profession }}</p>
+            <p class="text-center">{{ cv.quote }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="back">
+        <div class="header">
+          <h5 class="motto">{{ cv.motto }}</h5>
+        </div>
+        <div class="content">
+          <h4 class="text-center">Job Description</h4>
+          <p class="text-center">{{ cv.jobDescription }}</p>
+          <div class="stats-container">
+            <div class="stats">
+              <h4>{{ cv.followers }}</h4>
+              <p>Followers</p>
             </div>
-            <div class="back">
-              <div class="header">
-                <h5 class="motto">{{ cv.motto }}</h5>
-              </div>
-              <div class="content">
-                <h4 class="text-center">Job Description</h4>
-                <p class="text-center">{{ cv.jobDescription }}</p>
-                <div class="stats-container">
-                  <div class="stats">
-                    <h4>{{ cv.followers }}</h4>
-                    <p>Followers</p>
-                  </div>
-                  <div class="stats">
-                    <h4>{{ cv.following }}</h4>
-                    <p>Following</p>
-                  </div>
-                  <div class="stats">
-                    <h4>{{ cv.projects }}</h4>
-                    <p>Projects</p>
-                  </div>
-                </div>
-              </div>
+            <div class="stats">
+              <h4>{{ cv.following }}</h4>
+              <p>Following</p>
+            </div>
+            <div class="stats">
+              <h4>{{ cv.projects }}</h4>
+              <p>Projects</p>
             </div>
           </div>
         </div>
+        <div class="footer text-center">
+          <button class="btn btn-primary" (click)="onEmbaucher(cv)">Embaucher</button>
+        </div>
+      </div>
     </div>
-   
-  <ng-template #noCvSelected>
-    <p class="text-muted">Sélectionnez un CV pour voir les détails.</p>
-  </ng-template>
-  
+  </div>
+</div>
+
+<ng-template #noCvSelected>
+  <p class="text-muted">Sélectionnez un CV pour voir les détails.</p>
+</ng-template>

@@ -14,6 +14,7 @@ import { DefaultImagePipe } from './default-image.pipe';
 import { MiniWordComponent } from './mini-word/mini-word.component';
 import { RainbowDirective } from './rainbow.directive';
 import { RainbowComponent } from './rainbow/rainbow.component';
+import { EmbauchesComponent } from './embauches/embauches.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RainbowComponent } from './rainbow/rainbow.component';
     DefaultImagePipe,
     MiniWordComponent,
     RainbowDirective,
-    RainbowComponent
+    RainbowComponent,
+    EmbauchesComponent
   ],
   imports: [
     BrowserModule,
