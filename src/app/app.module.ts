@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { ColorChangerComponent } from './color-changer/color-changer.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CarteVisiteComponent } from './carte-visite/carte-visite.component';
@@ -40,6 +41,7 @@ import { CvModificationComponent } from './cv-modification/cv-modification.compo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
