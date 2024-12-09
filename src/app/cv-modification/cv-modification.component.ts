@@ -18,17 +18,14 @@ export class CvModificationComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.loadCVs();
+  async ngOnInit() {
+    await this.cvService.getcvs(); 
+    this.cvs = this.cvService.cvs;
+    const id = +this.route.snapshot.paramMap.get('id')!; 
+    this.cv = this.cvs.find(cv => cv.id === id) || null;
   }
 
-  loadCVs(): void {
-    this.cvService.fetchCVs().subscribe(cvs => {
-      this.cvs = cvs; 
-      const id = +this.route.snapshot.paramMap.get('id')!; 
-      this.cv = this.cvs.find(cv => cv.id === id) || null;
-    });
-  }
+  
 
   deleteCv(): void {
     if (this.cv) {

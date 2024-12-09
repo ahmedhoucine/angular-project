@@ -4,13 +4,13 @@ import { ToastrService } from 'ngx-toastr';
 import { Cv } from './model/cv.model';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root',
 })
 export class CvServiceService {
   private apiUrl = 'https://apilb.tridevs.net/api/';
   public cvs: Cv[] = []; 
+  private fetched = false; // Track if data has been fetched
 
   private fakeCvs: Cv[] = [
     new Cv(1, 'Sellaouti', 'Aymen', 12345678, 'Teacher', 'assets/images/as.jpg', 42),
@@ -20,30 +20,38 @@ export class CvServiceService {
 
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
-  fetchCVs(): Observable<Cv[]> {
-    return this.http.get<Cv[]>(`${this.apiUrl}personnes`).pipe(
-      catchError((error) => {
-        console.error('Error fetching CVs from API:', error);
-        this.toastr.error('Erreur lors de la récupération des CVs depuis l’API');
-        this.cvs = this.fakeCvs; // Set the fake CVs in case of failure
-        console.log('Using fake CVs as fallback:', this.cvs);
-        return of(this.cvs); // Return observable of fake CVs
-      })
-    );
+  getcvs(): Promise<void> {
+    if (this.fetched) {
+      // If data is already fetched, resolve immediately
+      return Promise.resolve();
+    }
+
+    // Fetch data from the API
+    return new Promise((resolve, reject) => {
+      this.http.get<Cv[]>(`${this.apiUrl}personnes`).subscribe(
+        (response) => {
+          this.cvs = response;
+          this.fetched = true; // Mark as fetched
+          this.toastr.success('CVs successfully fetched!', 'Success');
+          resolve();
+        },
+        (error) => {
+          console.error('Error fetching CVs:', error);
+          this.cvs = this.fakeCvs; // Fallback to fake data
+          this.fetched = true; // Mark as fetched even on failure
+          this.toastr.error('Erreur lors de la récupération des CVs depuis l’API', 'Error');
+          resolve(); // Resolve to avoid blocking even if there's an error
+        }
+      );
+    });
   }
 
-  
-  
-
   getCvById(id: number): Cv | null {
-    console.log('Looking for CV with ID:', id);
-    console.log('Available CVs:', this.cvs);
-    return this.cvs.find(cv => cv.cin === id) || null;
+    return this.cvs.find(cv => cv.id === id) || null;
   }
 
   deleteCv(id: number): void {
-    console.log('Deleting CV with ID:', id);
-    this.cvs = this.cvs.filter(cv => cv.cin !== id);
-    console.log('Updated CVs list after deletion:', this.cvs);
+    this.cvs = this.cvs.filter((cv) => cv.id !== id);
   }
+  
 }
