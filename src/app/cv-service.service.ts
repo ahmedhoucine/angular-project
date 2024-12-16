@@ -10,8 +10,7 @@ import { catchError } from 'rxjs/operators';
 export class CvServiceService {
   private apiUrl = 'https://apilb.tridevs.net/api/';
   public cvs: Cv[] = []; 
-  private fetched = false; // Track if data has been fetched
-
+  private fetched = false; 
   private fakeCvs: Cv[] = [
     new Cv(1, 'Sellaouti', 'Aymen', 12345678, 'Teacher', 'assets/images/as.jpg', 42),
     new Cv(2, 'Doe', 'John', 87654321, 'Engineer', 'assets/images/john.jpg', 35),
@@ -20,31 +19,33 @@ export class CvServiceService {
 
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
-  getcvs(): Promise<void> {
-    if (this.fetched) {
-      // If data is already fetched, resolve immediately
-      return Promise.resolve();
-    }
+  
+  getcvs(){
+    return this.cvs
+  }
 
-    // Fetch data from the API
+  fetchData(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.http.get<Cv[]>(`${this.apiUrl}personnes`).subscribe(
-        (response) => {
+      this.http.get(`${this.apiUrl}personnes`).subscribe(
+        (response: any) => {
           this.cvs = response;
-          this.fetched = true; // Mark as fetched
+          this.fetched = true;
           this.toastr.success('CVs successfully fetched!', 'Success');
+          resolve(); // Resolve the promise once data is fetched
+        },
+        (err: any) => {
+          this.cvs = this.fakeCvs; // Fallback to fake data
+          this.fetched = true;
+          this.toastr.error('Erreur lors de la récupération des CVs depuis l’API', 'Error');
           resolve();
         },
-        (error) => {
-          console.error('Error fetching CVs:', error);
-          this.cvs = this.fakeCvs; // Fallback to fake data
-          this.fetched = true; // Mark as fetched even on failure
-          this.toastr.error('Erreur lors de la récupération des CVs depuis l’API', 'Error');
-          resolve(); // Resolve to avoid blocking even if there's an error
+        () => {
+          console.log('Data transmission complete');
         }
       );
     });
   }
+  
 
   getCvById(id: number): Cv | null {
     return this.cvs.find(cv => cv.id === id) || null;

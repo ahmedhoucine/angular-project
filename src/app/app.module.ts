@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -20,6 +20,12 @@ import { EmbauchesComponent } from './embauches/embauches.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CvModificationComponent } from './cv-modification/cv-modification.component';
 import { FormComponent } from './form/form.component';
+import { ImageCarouselComponent } from './image-carousel/image-carousel.component';
+import { CvServiceService } from './cv-service.service';
+
+export function initializeApp(apiService: CvServiceService) {
+  return () => apiService.fetchData(); 
+}
 
 @NgModule({
   declarations: [
@@ -37,7 +43,8 @@ import { FormComponent } from './form/form.component';
     EmbauchesComponent,
     NavbarComponent,
     CvModificationComponent,
-    FormComponent
+    FormComponent,
+    ImageCarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,15 @@ import { FormComponent } from './form/form.component';
       preventDuplicates: true
     }),
   ],
-  providers: [],
+  providers: [
+    CvServiceService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [CvServiceService],
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

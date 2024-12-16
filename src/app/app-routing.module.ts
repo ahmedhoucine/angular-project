@@ -7,6 +7,7 @@ import { MiniWordComponent } from './mini-word/mini-word.component';
 import { RainbowComponent } from './rainbow/rainbow.component';
 import { CvModificationComponent } from './cv-modification/cv-modification.component';
 import { FormComponent } from './form/form.component';
+import { ImageCarouselComponent } from './image-carousel/image-carousel.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'rainbow', component: RainbowComponent },
   { path: 'cv_details/:id', component: CvModificationComponent },
   { path: 'form', component: FormComponent },
+  { path: 'rotating_images', component: ImageCarouselComponent },
+
 
 ];
 

@@ -3,11 +3,13 @@
     <div class="col-md-6">
       <app-cv-list [cvs]="cvs" (cvSelected)="onSelectCv($event)"></app-cv-list>
     </div>
+    
   
     <!-- Detailed CV -->
     <div class="col-md-6">
       <app-cv-detail [cv]="selectedCv"></app-cv-detail>
     </div>
+    
   </div>
   <app-embauches></app-embauches>
 

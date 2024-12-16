@@ -1,0 +1,7 @@
+<div class="carousel-container" >
+    <img 
+      *ngIf="currentImage$ | async as currentImage" 
+      [src]="currentImage" 
+      alt="Image carousel"
+    />
+  </div>
