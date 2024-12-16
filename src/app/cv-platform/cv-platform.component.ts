@@ -26,7 +26,4 @@ export class CvPlatformComponent {
   onSelectCv(cv: Cv) {
     this.selectedCv = cv;
   }
-  
-  
-
 }

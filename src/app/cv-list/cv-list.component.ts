@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Cv } from '../model/cv.model';
-
+import { SubjectService } from '../subject.service';
 
 @Component({
   selector: 'app-cv-list',
@@ -9,9 +9,10 @@ import { Cv } from '../model/cv.model';
 })
 export class CvListComponent {
   @Input() cvs: Cv[] = [];
-  @Output() cvSelected = new EventEmitter<Cv>();
-  
+
+  constructor(private subjectService: SubjectService) {}
+
   selectCv(cv: Cv) {
-    this.cvSelected.emit(cv);
+    this.subjectService.selectCv(cv);
   }
 }
