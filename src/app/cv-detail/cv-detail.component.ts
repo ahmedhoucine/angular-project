@@ -18,7 +18,7 @@ export class CvDetailComponent {
     this.embauches = this.embaucheService.getEmbauches();
   }
   @Input() cv: Cv | null = null;
-  onEmbaucher(cv: Cv) {
+  Embaucher(cv: Cv) {
     this.embaucheService.addEmbauche(cv);
     console.log(this.embauches)
   }

@@ -11,7 +11,6 @@ export class CvListComponent {
   @Input() cvs: Cv[] = [];
   @Output() cvSelected = new EventEmitter<Cv>();
   
-  // Émet l'événement avec le CV sélectionné
   selectCv(cv: Cv) {
     this.cvSelected.emit(cv);
   }

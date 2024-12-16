@@ -2,15 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Cv } from './model/cv.model';
-import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root',
 })
 export class CvServiceService {
   private apiUrl = 'https://apilb.tridevs.net/api/';
   public cvs: Cv[] = []; 
-  private fetched = false; 
   private fakeCvs: Cv[] = [
     new Cv(1, 'Sellaouti', 'Aymen', 12345678, 'Teacher', 'assets/images/as.jpg', 42),
     new Cv(2, 'Doe', 'John', 87654321, 'Engineer', 'assets/images/john.jpg', 35),
@@ -29,13 +27,11 @@ export class CvServiceService {
       this.http.get(`${this.apiUrl}personnes`).subscribe(
         (response: any) => {
           this.cvs = response;
-          this.fetched = true;
           this.toastr.success('CVs successfully fetched!', 'Success');
-          resolve(); // Resolve the promise once data is fetched
+          resolve(); 
         },
         (err: any) => {
-          this.cvs = this.fakeCvs; // Fallback to fake data
-          this.fetched = true;
+          this.cvs = this.fakeCvs; 
           this.toastr.error('Erreur lors de la récupération des CVs depuis l’API', 'Error');
           resolve();
         },
