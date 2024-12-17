@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-  authForm!: FormGroup; // Fixed: Using definite assignment with '!'
+  authForm!: FormGroup; 
 
   constructor(private fb: FormBuilder) {}
 

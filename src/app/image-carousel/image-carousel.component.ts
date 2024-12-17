@@ -13,15 +13,12 @@ export class ImageCarouselComponent implements OnInit {
     'assets/images/rotating_card_profile.png',
     'assets/images/rotating_card_profile3.png'
   ];
-  private intervalTime: number = 2000; 
-  private size: string = '400px'; 
+  private intervalTime: number = 1000; 
 
-  currentImage$: Observable<string> | undefined; // Observable for the current image
-
+  currentImage$: Observable<string> | undefined; 
   ngOnInit(): void {
-    // Create an observable that cycles through the images
     this.currentImage$ = interval(this.intervalTime).pipe(
-      map(index => this.images[index % this.images.length]) // Loop through the images
+      map(index => this.images[index % this.images.length]) 
     );
   }
 }
